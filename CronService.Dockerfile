@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
 # Add Docker’s official APT repository
+# Note that the architecture is specified as arm64, replace with your own or use $(dpkg --print-architecture)
 RUN echo "deb [arch=arm64] https://download.docker.com/linux/debian bookworm stable" > /etc/apt/sources.list.d/docker.list
 
 # Install Docker CLI
