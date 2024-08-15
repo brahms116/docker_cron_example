@@ -6,7 +6,6 @@ There are 2 docker images in this example:
 
 -   demo-service: a simple container that echos a message to the console and sleeps for 1 minute
 -   cron-service: a container which when started inserts a cron job via `crontab` to start the `demo-service` image every minute.
-    The demo-service is started with the environmennt variable `CONTENT` specified when starting the cron-service container. 
     The `CONTENT` environment variable is passed to the demo-service container and is echoed to the console, this is also logged to a log file
     in the cron-service container at `/app/cron.log`.
 
@@ -22,7 +21,7 @@ Then run the cron-service container with the following command:
 ```bash
 docker run -v /var/run/docker.sock:/var/run/docker.sock -e CONTENT="hello-3" -d cron-service
 ```
-By binding the docker socket to the container, we do the docker in docker thing. This allows the cron-service container to start other containers.
+By binding the docker socket to the container, we do the docker in docker thing. This allows the cron-service container to start other containers on the host.
 Note also that we are passing an environment variable to the cron-service container to control the message that is echoed by the demo-service container.
 
 After a while, when you run `docker ps`, you should see the container specified from the cron job running, look for the container with the image name `demo-service`.
