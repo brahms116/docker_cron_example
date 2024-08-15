@@ -35,5 +35,5 @@ If you do a `docker log` for the running `demo-service` container, you should se
 docker build -t demo-service -f DemoService.Dockerfile .
 docker build -t cron-service -f CronService.Dockerfile .
 
-docker run -v /var/run/docker.sock:/var/run/docker.sock -e CONTENT="hello-3" cron-service
+docker run -v /var/run/docker.sock:/var/run/docker.sock -e CONTENT="hello-3" -d cron-service
 ```
